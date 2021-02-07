@@ -1,6 +1,7 @@
 package com.chitranshu.onebancresturant.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.chitranshu.onebancresturant.FoodMenuActivity;
 import com.chitranshu.onebancresturant.Models.CuisineModel;
 import com.chitranshu.onebancresturant.R;
 
@@ -37,6 +39,15 @@ public class CuisineAdapter extends RecyclerView.Adapter<CuisineAdapter.viewHold
 
         holder.imageView.setImageResource(model.getPic());
         holder.textView.setText(model.getTitle());
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, FoodMenuActivity.class);
+                intent.putExtra("food",model.getTitle());
+                context.startActivity(intent);
+            }
+        });
 
     }
 
